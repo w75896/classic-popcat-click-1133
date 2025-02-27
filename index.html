@@ -11,30 +11,49 @@
             height: 100vh;
             background-color: #bdaa90;
         }
+
+
         .title{
             width: 80%;
+            max-width: 600px;
             margin-top: 2em;
         }
+
         .cat-img{
             width: 100%;
+            max-width: 800px;
             font-size: 80px;
             -webkit-text-stroke: 3px black;
             color: white;
             text-align: center;
+            user-select: none;
+
         }
+
+
         #p{
+
             background-image: url('imgs/p.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center bottom;
             height: 100%;
         }
-        body{
-            margin: 0;
-            padding: 0;
+        /*新贈文字 div 背景圖片 用 id=op 設定 imgs/op.png*/
+        #op{
+            background-image: url('imgs/op.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            height: 100%;
         }
 
 
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
     </style>
 
 </head>
@@ -45,7 +64,14 @@
     <div class="cat-img" id="p">0</div>
 </div>
 <script>
-
+    const cat = document.getElementById('p');
+    cat.onclick = function(){
+        cat.innerHTML = parseInt(cat.innerHTML) + 1;
+        cat.style.backgroundImage = 'url(imgs/op.png)';
+        setTimeout(() => {
+            cat.style.backgroundImage = 'url(imgs/p.png)';
+        }, 100);
+    }
 </script>
 </body>
 </html>
