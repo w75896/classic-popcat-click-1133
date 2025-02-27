@@ -64,14 +64,22 @@
     <div class="cat-img" id="p">0</div>
 </div>
 <script>
-    const cat = document.getElementById('p');
-    cat.onclick = function(){
-        cat.innerHTML = parseInt(cat.innerHTML) + 1;
-        cat.style.backgroundImage = 'url(imgs/op.png)';
-        setTimeout(() => {
-            cat.style.backgroundImage = 'url(imgs/p.png)';
-        }, 100);
+    // 計數器基本邏輯
+    let count = 0;
+    addCount = () => {
+        count++;
+        document.getElementById('p').innerText = count;
     }
+    document.addEventListener('mousedown', () => {
+        // 將id:p改成op
+        addCount();
+        document.getElementById('p').id = 'op';
+        new Audio('pops/pop1.mp3').play();
+    });
+    document.addEventListener('mouseup', () => {
+        document.getElementById('op').id = 'p';
+        new Audio('pops/pop2.mp3').play();
+    });
 </script>
 </body>
 </html>
